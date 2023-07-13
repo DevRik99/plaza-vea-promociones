@@ -1,16 +1,36 @@
+<script setup>
+const route = useRoute();
+const id = route.params.id;
+const datos = ref();
+const getPromocion = async () => {
+  try {
+    const response = await fetch(
+      `https://61c35faa9cfb8f0017a3eb2e.mockapi.io/api/v1/posts/${id}`
+    );
+    const data = await response.json();
+    datos.value = data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+onMounted(() => {
+  getPromocion();
+});
+</script>
 <template>
-  <div class="m-[45px]">
-    <nuxt-link to="/promociones" class="text-[#FC2016] font-bold text-2xl my-6"
-      >Lg TV - 69% de descuento</nuxt-link
-    >
+  <div class="m-[45px]" v-if="datos">
+    <nuxt-link to="/promociones" class="text-[#FC2016] font-bold text-2xl my-6">{{
+      datos.title
+    }}</nuxt-link>
     <img src="/img/tv-full.png" alt="TV FULL" class="my-[30px]" />
     <div class="flex items-center">
       <img src="/img/profile.png" alt="" />
-      <p class="font-bold text-[20px]">Indra panta</p>
+      <p class="font-bold text-[20px]">
+        {{ datos.user?.firstName }} {{ datos.user?.lastName }}
+      </p>
     </div>
     <p class="mb-5">
-      Hola soy Indra y te puedo ayudar a adquirir hasta un 69% de descuento. Solo llego a
-      los Plaza Vea de San Miguel y Breña.
+      {{ datos.description }}
     </p>
     <p>Publicado a las 12:30AM</p>
     <div class="flex gap-2 mb-[30px]">
@@ -52,5 +72,3 @@
     </section>
   </div>
 </template>
-
-<script setup></script>
