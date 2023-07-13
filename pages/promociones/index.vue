@@ -22,9 +22,13 @@ onMounted(() => {
 </script>
 <template>
   <div class="m-[45px] scroll-auto">
-    <h2 class="text-[#FC2016] font-bold text-2xl my-6">Todas las promociones</h2>
-    <section class="flex flex-col justify-center items-start gap-5 mx-auto">
-      <p class="mx-auto font-medium w-full">Últimas promociones</p>
+    <h2 class="text-[#FC2016] font-bold text-2xl my-6 text-center lg:text-start">
+      Todas las promociones
+    </h2>
+    <section
+      class="flex flex-col justify-center items-center lg:items-start gap-5 mx-auto"
+    >
+      <p class="mx-auto font-medium lg:w-full">Últimas promociones</p>
 
       <Promocion
         v-for="({ image, title, id, description }, index) of promociones"
