@@ -17,13 +17,12 @@
           class="bg-[#D9D9D9] w-full rounded p-2 mb-2"
           placeholder="Fernandez Panta"
         />
-        <nuxt-link
-          to="/promociones"
+        <button
           type="button"
-          class="bg-[#FFE81E] text-[#FC2016] w-full p-2 rounded-[40px] mt-[30px] text-center font-bold"
+          class="bg-[#FFE81E] text-[#FC2016] w-full p-2 rounded-[40px] mt-[30px]"
         >
           Ingresar
-        </nuxt-link>
+        </button>
       </form>
     </section>
   </div>
