@@ -2,6 +2,7 @@
 const route = useRoute();
 const id = route.params.id;
 const datos = ref();
+const active = ref(false);
 const getPromocion = async () => {
   try {
     const response = await fetch(
@@ -19,9 +20,9 @@ onMounted(() => {
 </script>
 <template>
   <div class="m-[45px]" v-if="datos">
-    <nuxt-link to="/promociones" class="text-[#FC2016] font-bold text-2xl my-6">{{
-      datos.title
-    }}</nuxt-link>
+    <nuxt-link to="/promociones" class="text-[#FC2016] font-bold text-2xl my-6">
+      <i class="bx bx-arrow-back"></i>{{ datos.title }}</nuxt-link
+    >
     <img src="/img/tv-full.png" alt="TV FULL" class="my-[30px]" />
     <div class="flex items-center">
       <img src="/img/profile.png" alt="" />
@@ -41,10 +42,12 @@ onMounted(() => {
         Reservar
       </button>
       <button
+        @click="active = !active"
         type="button"
-        class="bg-[#eaeaea] text-black w-[45px] p-2 px-4 rounded-[40px] mt-[30px] text-center font-medium"
+        class="bg-[#eaeaea] text-black p-2 px-4 rounded-[40px] mt-[30px] text-center font-medium"
       >
         16
+        <i class="bx" :class="active ? 'bxs-heart text-[#FC2016]' : 'bx-heart'"></i>
       </button>
     </div>
     <section>
